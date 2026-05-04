@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import com.example.sge.model.Module;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public interface EtudiantRepository
     List<Etudiant> findByNomContainingIgnoreCase(String nom);
 
     List<Etudiant> findByMoyenneGreaterThanEqual(double seuil);
+    List<Etudiant> findByModule(Module module);
 
     @Query("SELECT e FROM Etudiant e WHERE e.moyenne >= :seuil " +
             "ORDER BY e.moyenne DESC")

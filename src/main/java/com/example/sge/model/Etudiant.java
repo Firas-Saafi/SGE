@@ -22,6 +22,9 @@ public class Etudiant {
     @JoinColumn(name = "filiere_id")
     private Filiere filiere;
 
+    @ManyToOne
+    @JoinColumn(name = "module_id")
+    private Module module
     public Etudiant() {}
 
 
@@ -51,5 +54,8 @@ public class Etudiant {
 
     public Filiere getFiliere()               { return filiere; }
     public void setFiliere(Filiere filiere)   { this.filiere = filiere; }
+
+    public Module getModule() { return module;}
+    public void setModule(Module modeule) { this.module =module;}
 
 }

@@ -1,6 +1,7 @@
 package com.example.sge.model;
 import jakarta.persistence.*;
 @Entity
+@Table(name = "filieres")
 public class Filiere {
 
     @Id

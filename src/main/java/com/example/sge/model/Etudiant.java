@@ -17,16 +17,15 @@ public class Etudiant {
     private LocalDate dateNaissance;
     private String    groupe;
     private double    moyenne;
-
     @ManyToOne
     @JoinColumn(name = "filiere_id")
     private Filiere filiere;
 
     @ManyToOne
     @JoinColumn(name = "module_id")
-    private Module module
-    public Etudiant() {}
+    private Module module;
 
+    public Etudiant() {}
 
     public Long getId()                       { return id; }
     public void setId(Long id)                { this.id = id; }
@@ -55,7 +54,6 @@ public class Etudiant {
     public Filiere getFiliere()               { return filiere; }
     public void setFiliere(Filiere filiere)   { this.filiere = filiere; }
 
-    public Module getModule() { return module;}
-    public void setModule(Module modeule) { this.module =module;}
-
+    public Module getModule()                 { return module; }
+    public void setModule(Module module)      { this.module = module; }
 }

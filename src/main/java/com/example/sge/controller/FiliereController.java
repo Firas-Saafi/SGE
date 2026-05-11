@@ -18,22 +18,28 @@ public class FiliereController {
     @PostMapping
     public ResponseEntity<Filiere> ajouter(
             @RequestBody Filiere f) {
-        return ResponseEntity
-                .status(201)
+        return ResponseEntity.status(201)
                 .body(filiereService.ajouter(f));
     }
 
     @GetMapping
     public ResponseEntity<List<Filiere>> listerTous() {
-
         return ResponseEntity.ok(filiereService.listerTous());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Filiere> trouverParId(@PathVariable Long id) {
+    public ResponseEntity<Filiere> trouverParId(
+            @PathVariable Long id) {
         return filiereService.trouverParId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Filiere> modifier(
+            @PathVariable Long id,
+            @RequestBody Filiere f) {
+        return ResponseEntity.ok(filiereService.modifier(id, f));
     }
 
     @DeleteMapping("/{id}")

@@ -49,30 +49,41 @@ public class EtudiantController {
         etudiantService.supprimer(id);
         return ResponseEntity.noContent().build();
     }
-@GetMapping("/recherche")
-    public ResponseEntity<List<Etudiant>> rechercher(
-            @RequestParam String nom){
-        return ResponseEntity.ok(etudiantService.rechercherParNom(nom));
-}
 
-    @GetMapping("/groupe")
-    public ResponseEntity<List<Etudiant>> groupe(
-            @RequestParam String g){
-        return ResponseEntity.ok(etudiantService.trouverParGroupe(g));
+    @GetMapping("/recherche")
+    public ResponseEntity<List<Etudiant>> rechercher(
+            @RequestParam String nom) {
+        return ResponseEntity.ok(
+                etudiantService.rechercherParNom(nom));
     }
 
+    @GetMapping("/groupe")
+    public ResponseEntity<List<Etudiant>> parGroupe(
+            @RequestParam String g) {
+        return ResponseEntity.ok(
+                etudiantService.trouverParGroupe(g));
+    }
 
     @GetMapping("/admis")
     public ResponseEntity<List<Etudiant>> admis(
-            @RequestParam double seuil){
-        return ResponseEntity.ok(etudiantService.trouverAdmis(seuil));
+            @RequestParam double seuil) {
+        return ResponseEntity.ok(
+                etudiantService.trouverAdmis(seuil));
     }
 
     @GetMapping("/meilleurs")
     public ResponseEntity<List<Etudiant>> meilleurs(
-            @RequestParam double seuil){
-        return ResponseEntity.ok(etudiantService.trouverMeilleur(seuil));
+            @RequestParam double seuil) {
+        return ResponseEntity.ok(
+                etudiantService.trouverMeilleurs(seuil));
     }
 
-
+    @GetMapping("/page")
+    public Page<Etudiant> getPage(
+            @RequestParam(defaultValue = "0")  int page,
+            @RequestParam(defaultValue = "5")  int size,
+            @RequestParam(defaultValue = "id") String sortBy) {
+        return etudiantService
+                .listerAvecPagination(page, size, sortBy);
+    }
 }

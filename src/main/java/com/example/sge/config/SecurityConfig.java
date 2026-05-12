@@ -48,7 +48,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers("/templates/bullettins/bulletins/**").permitAll()
+                        .requestMatchers("/templates/bullettins/**").permitAll()
 
                         .requestMatchers("/auth/**").permitAll()
 
@@ -60,8 +60,6 @@ public class SecurityConfig {
                         .requestMatchers("/filieres/**").hasRole("ADMIN")
 
                         .requestMatchers("/modules/**").hasRole("ADMIN")
-
-
                         .requestMatchers(HttpMethod.GET, "/notes/**").hasAnyRole("USER","ADMIN")
                         .requestMatchers("/notes/**").hasRole("ADMIN")
 

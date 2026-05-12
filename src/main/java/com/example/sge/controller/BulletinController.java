@@ -19,10 +19,10 @@ public class BulletinController {
     @GetMapping
     public String getAllBulletins(Model model) {
 
-        model.addAttribute("templates/bullettins/bulletins",
+        model.addAttribute("bulletins",
                 bulletinService.genererTousLesBulletins());
 
-        return "bullettins/liste.html";
+        return "liste";
     }
 
 
@@ -32,6 +32,6 @@ public class BulletinController {
         model.addAttribute("bulletin",
                 bulletinService.genererBulletin(id));
 
-        return "bullettins/detail";
+        return "details";
     }
 }

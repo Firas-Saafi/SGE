@@ -24,8 +24,12 @@ public class Utilisateur implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(
-                "ROLE_" + role.name()));
+
+        if (role == null) {
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        }
+
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
     @Override public boolean isAccountNonExpired()     { return true; }
     @Override public boolean isAccountNonLocked()      { return true; }

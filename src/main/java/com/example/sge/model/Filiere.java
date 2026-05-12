@@ -30,6 +30,10 @@ public class Filiere {
     public String getNiveau()            { return niveau; }
     public void setNiveau(String niveau) { this.niveau = niveau; }
 
-    public Integer getCapacite()         { return capacite; }
-    public void setCapacite(int c)   { this.capacite = c; }
+    public Integer getCapacite() {
+        return capacite;
+    }
+    public void setCapacite(Integer capacite) {
+        this.capacite = capacite;
+    }
 }
